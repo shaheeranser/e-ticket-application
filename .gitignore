@@ -1,5 +1,6 @@
 .venv/
 __pycache__/
+generated_tickets/
 *.png
 *.pdf
 *.db

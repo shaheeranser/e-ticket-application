@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E Ticket Template</title>
+</head>
+<body class="h-100 w-100">
+    <div class="container w-full h-full text-center text-blue-400 bg-gray-100 mt-10">
+        <h1 class="text-3xl font-bold underline">
+            E Ticket
+        </h1>
+        <p class="mt-4">This is your electronic ticket. Please present this ticket at the event entrance.</p>
+        <p class="mt-2">SAP ID: {{ sap_id }}</p>
+        <p class="mt-2">Name: {{ name }}</p>
+        <div class="mt-4">
+            <img src="{{ qr_path }}" alt="QR Code">
+        </div>
+    </div>
+    <script src="https://cdn.tailwindcss.com"></script>
+</body>
+</html>
