@@ -1,7 +1,8 @@
 from PySide6.QtSql import QSqlDatabase, QSqlTableModel, QSqlQuery
+from PySide6.QtCore import Qt
 
 class Database:
-    def __init__(self, db_name="app_database.db"):
+    def __init__(self, db_name):
         self.db = QSqlDatabase.addDatabase("QSQLITE")
         self.db.setDatabaseName(db_name)
         if not self.db.open():
@@ -9,6 +10,8 @@ class Database:
         self.initialize_tables()
         self.model = QSqlTableModel()
         self.model.setTable("tickets")
+        self.model.insertColumn(3) 
+        self.model.setHeaderData(3, Qt.Horizontal, "Actions")
         self.model.setEditStrategy(QSqlTableModel.OnManualSubmit)
         self.model.select()
 

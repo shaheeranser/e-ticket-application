@@ -2,21 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E Ticket Template</title>
+    <style>
+        @page { margin: 0; }
+        body { margin: 0; padding: 0; font-family: 'Helvetica', sans-serif; background-color: #f3f4f6; }
+        .ticket-card { background: white; border-radius: 20px; margin: 20px; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .dashed-line { border-top: 2px dashed #e5e7eb; position: relative; margin: 20px 0; }
+        .dashed-line::before, .dashed-line::after {
+            content: ''; position: absolute; top: -10px; width: 20px; height: 20px; 
+            background-color: #f3f4f6; border-radius: 50%;
+        }
+        .dashed-line::before { left: -30px; }
+        .dashed-line::after { right: -30px; }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="h-100 w-100">
-    <div class="container w-full h-full text-center text-blue-400 bg-gray-100 mt-10">
-        <h1 class="text-3xl font-bold underline">
-            E Ticket
-        </h1>
-        <p class="mt-4">This is your electronic ticket. Please present this ticket at the event entrance.</p>
-        <p class="mt-2">SAP ID: {{ sap_id }}</p>
-        <p class="mt-2">Name: {{ name }}</p>
-        <div class="mt-4">
-            <img src="{{ qr_path }}" alt="QR Code">
+<body class="bg-gray-100 flex flex-col items-center justify-start min-h-screen">
+    <div class="ticket-card w-[90%] max-w-sm mt-10">
+        <div class="bg-blue-600 p-6 text-center">
+            <h1 class="text-white text-2xl font-black uppercase tracking-widest">Entry Pass</h1>
+            <p class="text-blue-100 text-xs mt-1 uppercase">Official Event Ticket</p>
+        </div>
+
+        <div class="p-8 text-center">
+            <div class="mb-6">
+                <p class="text-gray-400 text-xs uppercase font-bold tracking-tight">Attendee Name <span class="text-xl font-bold text-gray-800">{{ name }}</span> </p>
+            </div>
+            
+            <div class="mb-6">
+                <p class="text-gray-400 text-xs uppercase font-bold tracking-tight">Registration ID <span class="text-lg font-mono text-blue-600 font-bold">{{ sap_id }}</span> </p>
+            </div>
+
+            <div class="dashed-line"></div>
+
+            <div class="flex flex-col items-center justify-center pt-4">
+                <div class="bg-white p-2 border-2 border-gray-100 rounded-xl">
+                    <img src="{{ qr_path }}" alt="QR Code" class="w-48 h-48">
+                </div>
+                <p class="mt-4 text-gray-500 text-[10px] leading-relaxed px-4">
+                    Please scan this code at the venue entrance. <br> 
+                    Do not share this ticket with others.
+                </p>
+            </div>
+        </div>
+
+        <div class="bg-gray-50 p-4 border-t border-gray-100 text-center">
+            <p class="text-gray-400 text-[9px] uppercase">Riphah College Of Science and Technology</p>
         </div>
     </div>
-    <script src="https://cdn.tailwindcss.com"></script>
 </body>
 </html>
